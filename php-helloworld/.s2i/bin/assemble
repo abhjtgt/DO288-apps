@@ -5,7 +5,9 @@ echo "***** Making pre-invocation changes..."
 rc=$?
 
 if [ $rc -eq 0 ]; then
-    echo "Making post-invocation changes..."
+    echo "***** Making post-invocation changes..."
+	cat /usr/libexec/s2i/assemble
+	echo "------ Making post-invocation changes..."
 else
     echo "Error: assemble failed!"
 fi
