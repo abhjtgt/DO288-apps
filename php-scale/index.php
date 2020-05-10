@@ -1,3 +1,3 @@
 <?php
-  print "VERSION 2 ##HOST -> " . gethostname() ." (" . $_SERVER['SERVER_ADDR'] . ")" . "     ** \n";
+  print "VERSION 3 ### HOST -> " . gethostname() ." (" . $_SERVER['SERVER_ADDR'] . ")" . "     *** \n";
 ?>
