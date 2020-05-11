@@ -1,10 +1,10 @@
 kind: "BuildConfig"
 apiVersion: "build.openshift.io/v1"
 metadata:
-  name: "simple-pipeline" 
+  name: "jenmvn" 
 spec:
   source:
-    contextDir: simple-pipeline 
+    contextDir: jenkins 
     git:
       uri: "https://github.com/abhjtgt/DO288-apps" 
       ref: "selftry"
