@@ -16,7 +16,7 @@ pipeline {
 		sh "mvn --version"
 		sh "echo *****"
 		    sh "uname -a"
-		    sh "ls /"
+		    sh "df -k"
 		    sh "pwd"
 	    }
         }
