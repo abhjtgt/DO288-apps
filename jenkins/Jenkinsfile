@@ -14,7 +14,11 @@ pipeline {
         stage('stage 1') {
             steps {
 		sh "mvn --version"
-                }
+		sh "echo *****"
+		    sh "uname -a"
+		    sh "ls /"
+		    sh "pwd"
+	    }
         }
 
         // TODO: ADD A STAGE THAT SAYS HELLO
