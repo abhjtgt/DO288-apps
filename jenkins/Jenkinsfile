@@ -1,0 +1,27 @@
+pipeline {
+    options {
+        // set a timeout of 30 minutes for this pipeline
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    agent {
+      node {
+          label 'master'
+      }
+    }
+
+    stages {
+
+        stage('stage 1') {
+            steps {
+		sh "Stage One"
+                }
+        }
+
+        // TODO: ADD A STAGE THAT SAYS HELLO
+        stage('stage 2') {
+          steps {
+            sh 'echo hello from stage 2!'
+          }
+        }
+
+}
