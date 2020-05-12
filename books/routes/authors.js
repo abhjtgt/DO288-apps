@@ -4,7 +4,7 @@ const router = express.Router();
 
 const authors = require('../data/authors');
 
-const user = 'dkr';
+// const user = 'dkr';
 
 /* GET users listing. */
 router.get('/', (req, res) => {
