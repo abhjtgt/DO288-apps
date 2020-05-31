@@ -24,14 +24,14 @@ pipeline {
         oc delete all -l build=${APP} -n ${PRO}
         mvn -s settings.xml package
         oc new-build --name ${APP} java:8 --binary=true -n ${PRO}
-        oc start-build bc/${APP} --from-file=target/${APP}.jar
-        
+        echo "finding..."
+        find . -name ${APP}.jar
         '''
         
         script {
           openshift.withCluster() {
             openshift.withProject(env.PRO) {
-              openshif.selector("bc", "${APP}").startBuild("--from-file=${APP}/target/${APP}.jar")
+              openshif.selector("bc", "${APP}").startBuild("--from-file=jentry/target/${APP}.jar")
             }
           }
         }
