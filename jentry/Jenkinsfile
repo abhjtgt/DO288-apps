@@ -21,11 +21,11 @@ pipeline {
         sh '''
         ls -lrt
         cd jentry
-        oc delete all -l app=${APP}
-        oc delete all -l build=${APP}
+        oc delete all -l app=${APP} -n ${PRO}
+        oc delete all -l build=${APP} -n ${PRO}
         mvn -s settings.xml package
         oc new-build --name ${APP} java:8 --binary=true -n ${PRO}
-        oc start-build --from-file=jentry/target/${APP}.jar
+        oc start-build bc/${APP} --from-file=jentry/target/${APP}.jar
         
         '''
       }
