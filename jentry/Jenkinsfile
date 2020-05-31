@@ -31,7 +31,7 @@ pipeline {
         script {
           openshift.withCluster() {
             openshift.withProject(env.PRO) {
-              openshift.selector("bc", "${APP}").startBuild("--from-file=${APP}/target/${APP}.jar")
+              openshift.selector("bc", "${APP}").startBuild("--from-file=jentry/target/${APP}.jar")
             }
           }
         }
