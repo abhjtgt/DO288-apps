@@ -27,6 +27,14 @@ pipeline {
         oc start-build bc/${APP} --from-file=target/${APP}.jar
         
         '''
+        
+        script {
+          openshift.withCluster() {
+            openshift.withProject(env.PRO) {
+              openshif.selector("bc", "${APP}").startBuild("--from-file=${APP}/target/${APP}.jar")
+            }
+          }
+        }
       }
     }
     
