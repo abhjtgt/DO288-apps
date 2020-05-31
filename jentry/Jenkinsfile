@@ -10,12 +10,14 @@ pipeline {
   
   environment {
    PRO = "jentry2"
+   APP = "myjen"
   }
   
   stages {
     stage('Build') {
       steps {
        echo "** Building" 
+       echo "Project: ${PRO}"
       }
     }
     
