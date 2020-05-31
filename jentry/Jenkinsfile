@@ -19,6 +19,8 @@ pipeline {
        echo "** Building" 
        echo "Project: ${PRO}"
         sh '''
+        ls -lrt
+        cd jentry
         mvn -s settings.xml clean package
         oc new-app --name ${APP} --binary=true -n ${PRO}
         '''
