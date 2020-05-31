@@ -22,7 +22,7 @@ pipeline {
         ls -lrt
         cd jentry
         mvn -s settings.xml clean package
-        oc new-app --name ${APP} --binary=true -n ${PRO}
+        oc new-app --name ${APP} java:8 --binary=true -n ${PRO}
         '''
       }
     }
