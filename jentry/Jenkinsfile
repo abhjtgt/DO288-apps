@@ -18,6 +18,10 @@ pipeline {
       steps {
        echo "** Building" 
        echo "Project: ${PRO}"
+        sh '''
+        mvn -s settings.xml clean package
+        oc new-app --name ${APP} --binary=true -n ${PRO}
+        '''
       }
     }
     
