@@ -25,9 +25,9 @@ pipeline {
         mvn -s settings.xml package
         ls -l
         echo "---"
-        ls -l jentry-jen
+        pwd
         echo "---"
-        ls -l jentry-jen/jentry
+        ls -l target
         oc new-build --name ${APP} java:8 --binary=true -n ${PRO}
         echo "finding..."
         echo $(find . -name ${APP}.jar)
