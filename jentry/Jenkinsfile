@@ -52,6 +52,10 @@ pipeline {
     stage('Deploy') {
       steps {
        echo "** Deploying" 
+        sh '''
+        oc new-app --name ${APP} ${APP}  -n ${PRO}
+        oc expose svc ${APP}
+        '''
       }
     }
   }
