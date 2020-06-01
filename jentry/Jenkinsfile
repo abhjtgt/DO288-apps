@@ -20,14 +20,14 @@ pipeline {
        echo "Project: ${PRO}"
         sh '''
         cd jentry
+        oc delete all -l app=${APP} -n ${PRO}
+        oc delete all -l build=${APP} -n ${PRO}
+        mvn -s settings.xml package
         ls -l
         echo "---"
         ls -l jentry-jen
         echo "---"
         ls -l jentry-jen/jentry
-        oc delete all -l app=${APP} -n ${PRO}
-        oc delete all -l build=${APP} -n ${PRO}
-        mvn -s settings.xml package
         oc new-build --name ${APP} java:8 --binary=true -n ${PRO}
         echo "finding..."
         echo $(find . -name ${APP}.jar)
