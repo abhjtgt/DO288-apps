@@ -54,7 +54,7 @@ pipeline {
        echo "** Deploying" 
         sh '''
         oc new-app --name ${APP} ${APP}  -n ${PRO}
-        oc expose svc ${APP}
+        oc expose svc ${APP}  -n ${PRO}
         '''
       }
     }
