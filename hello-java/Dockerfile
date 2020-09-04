@@ -23,6 +23,6 @@ RUN   chown -R root /opt/app-root && \
 EXPOSE 8080
 
 USER  root
-
+RUN echo "***" && ls -l /opt/app-root && echo "###" && ls -l /opt/app-root/bin/
 # Run the fat JAR
 CMD   /opt/app-root/bin/run-app.sh
