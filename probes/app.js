@@ -16,7 +16,7 @@ route.get('/', function(req, res) {
 //    res.send('Hello! This is the index page for the app.\n');
 	var os = require("os");
 	var hostname = os.hostname();
-	var vars = " v.1.0 "
+	var vars = " v.1.1 "
 	console.log('REQ!' + vars + hostname );
     	res.send('Hello!' + vars + hostname + "\n" );
 });
