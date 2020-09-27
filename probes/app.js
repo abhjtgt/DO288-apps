@@ -17,7 +17,8 @@ route.get('/', function(req, res) {
 	var os = require("os");
 	var hostname = os.hostname();
 	var vars = " v.1.0 "
-    res.send('Hello!' + vars + hostname + "\n" );
+	console.log('REQ!' + vars + hostname );
+    	res.send('Hello!' + vars + hostname + "\n" );
 });
 
 // A route that returns readiness status
