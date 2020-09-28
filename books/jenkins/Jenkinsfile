@@ -108,7 +108,9 @@ pipeline {
                     input message: "Promote to Staging?"
                 }
                 //TODO: Tag the books:latest image stream as books:stage
+		    sh '''
 		oc tag  books:latest books:stage
+		'''
             }
         }
 
