@@ -61,7 +61,7 @@ pipeline {
                 echo '### Creating a new app in DEV env ###'
                 //TODO: Create a new app and expose the service
 		sh '''
-			oc new-app --name=${APP_NAME} --build-env npm_config_registry=${NEXUS_SERVER} 
+			oc new-app --name=${APP_NAME} --build-env npm_config_registry=${NEXUS_SERVER} \
 			nodejs~${APP_GIT_URL} --context-dir ${APP_NAME}
 			
 			oc expose svc ${APP_NAME}
