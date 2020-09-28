@@ -109,7 +109,7 @@ pipeline {
                 }
                 //TODO: Tag the books:latest image stream as books:stage
 		    sh '''
-		oc tag  books:latest books:stage
+		oc tag  books:latest abhijit-darvankar-rbc-com-books-stage/books:stage
 		'''
             }
         }
