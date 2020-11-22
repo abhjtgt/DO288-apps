@@ -23,8 +23,10 @@ pipeline {
 			}
 		}
 		stage ("DEPLOY") {
-			timeout(time:30, unit:'MINUTES'){
-				input message: "Move to next" 	
+			steps {
+				timeout(time:30, unit:'MINUTES'){
+					input message: "Move to next" 	
+				}	
 			}
 		}
 	}
