@@ -2,6 +2,9 @@ pipeline {
 	options {
 		timeout(time:30, unit:'MINUTES')
 	}
+	environment {
+		NAME = "dkr"	
+	}
 	agent {
 		node {
 			label 'master'
@@ -10,7 +13,7 @@ pipeline {
 	stages {
 		stage ('BUILD') {
 			steps {
-				sh 'echo Building...'
+				sh 'echo Building: $NAME'
 			}
 		}
 		
