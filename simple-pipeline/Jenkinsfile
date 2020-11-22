@@ -30,6 +30,14 @@ pipeline {
 				timeout(time:30, unit:'MINUTES'){
 					input message: "Move to next" 	
 				}	
+				
+				script {
+					openshift.withCluster() {
+						openshift.withProject()	{
+							echo "Inside now"	
+						}
+					}	
+				}
 			}
 		}
 	}
