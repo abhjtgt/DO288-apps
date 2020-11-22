@@ -13,5 +13,14 @@ pipeline {
 				sh 'echo Building...'
 			}
 		}
+		
+		stage ("TEST") {
+			steps {
+				sh ''' echo Testin
+				cat /etc/passwd
+				'''
+				
+			}
+		}
 	}
 }
