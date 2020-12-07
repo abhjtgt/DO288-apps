@@ -18,7 +18,7 @@ pipeline {
     stage("BUILD") {
       steps {
         sh '''
-          cd $APPNAME
+          cd pipeline
           echo "Compiling on $NEXUS_SERVER"
           grep url settings.xml
           mvn -s settings.xml clean compile
