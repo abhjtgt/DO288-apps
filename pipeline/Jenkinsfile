@@ -15,7 +15,11 @@ pipeline {
     stage("BUILD") {
       steps {
         sh '''
-          echo "Testing var $NAME"
+          echo "Compiling"
+          mvn -s settings.xml clean compile
+          
+          echo "Packaging"
+          mvn -s settings.xml clean package
         '''
       }
     }
