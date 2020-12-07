@@ -15,6 +15,7 @@ pipeline {
     stage("BUILD") {
       steps {
         sh '''
+          ls -lrt 
           echo "Compiling"
           mvn -s settings.xml clean compile
           
