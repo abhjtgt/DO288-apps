@@ -5,8 +5,8 @@ pipeline {
   environment {
    NAME = "ABHIJIT" 
   }
-  node {
-    agent {
+  agent {
+    node {
       label 'master' 
     }
   }
