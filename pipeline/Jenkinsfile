@@ -1,4 +1,23 @@
 pipeline {
-
-
+  options {
+    timeout( time:30, unit:'MINUTES') 
+  }
+  environment {
+   NAME = "ABHIJIT" 
+  }
+  node {
+    agent {
+      label 'master' 
+    }
+  }
+  
+  stages {
+    stage("BUILD") {
+      steps {
+        sh '''
+          echo "Testing var $NAME"
+        '''
+      }
+    }
+  }
 }
