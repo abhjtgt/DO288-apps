@@ -24,6 +24,7 @@ pipeline {
           # mvn -s settings.xml clean compile
           echo "Packaging"
           mvn -s settings.xml clean package
+          pwd
           ls -lrt target
           echo "Building" 
           
