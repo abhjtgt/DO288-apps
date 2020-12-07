@@ -4,7 +4,8 @@ pipeline {
   }
   environment {
    NAME = "ABHIJIT" 
-    APPNAME = "pipeline"
+    APPNAME = "movies"
+    STAGE = "stage"
     NEXUS_SERVER = "http://nexus-common.apps.na45.prod.nextcle.com/repository/java"
   }
   agent {
@@ -25,6 +26,11 @@ pipeline {
           mvn -s settings.xml clean package
           ls -lrt target
           echo "Building" 
+          
+          oc delete all -l app=${APPNAME} -n $STAGE
+          oc delete all -l build=${APPNAME} -n $STAGE
+          
+          oc new-build --name=${APPNAME} --binary=true
         '''
       }
     }
