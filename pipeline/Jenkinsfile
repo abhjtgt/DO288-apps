@@ -5,6 +5,7 @@ pipeline {
   environment {
    NAME = "ABHIJIT" 
     APPNAME = "pipeline"
+    NS = "http://nexus-common.apps.na45.prod.nextcle.com/repository/java"
   }
   agent {
     node {
@@ -18,7 +19,7 @@ pipeline {
         sh '''
           ls -lrt 
           cd $APPNAME
-          echo "Compiling"
+          echo "Compiling on $NEXUS_SERVER"
           mvn -s settings.xml clean compile
           
           echo "Packaging"
