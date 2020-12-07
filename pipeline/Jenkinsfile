@@ -20,6 +20,7 @@ pipeline {
         sh '''
           cd $APPNAME
           echo "Compiling on $NEXUS_SERVER"
+          grep url settings.xml
           mvn -s settings.xml clean compile
           echo "Packaging"
           mvn -s settings.xml clean package
