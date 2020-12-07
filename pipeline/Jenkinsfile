@@ -21,7 +21,7 @@ pipeline {
           cd pipeline
           echo "Compiling on $NEXUS_SERVER"
           grep url settings.xml
-          mvn -s settings.xml clean compile
+          # mvn -s settings.xml clean compile
           echo "Packaging"
           mvn -s settings.xml clean package
           ls -lrt target
@@ -32,6 +32,14 @@ pipeline {
           
           oc new-build --name=${APPNAME} --binary=true -n $STAGE
         '''
+        
+        script {
+            openshift.withCluster() {
+                openshift.withProject("$STAGE") {
+                  openshift.selector("bc", "$APPNAME).startBuild("--from-file=#{APPNAME}/target/movies.jar","--follow=true", "--wait=true")
+            }
+          }
+        }
       }
     }
   }
