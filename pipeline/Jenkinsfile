@@ -36,7 +36,7 @@ pipeline {
         script {
             openshift.withCluster() {
                 openshift.withProject("$STAGE") {
-                  openshift.selector("bc", "$APPNAME).startBuild("--from-file=${APPNAME}/target/movies.jar","--follow=true", "--wait=true")
+                  openshift.selector("bc", "$APPNAME").startBuild("--from-file=${APPNAME}/target/movies.jar","--follow=true", "--wait=true")
             }
           }
         }
