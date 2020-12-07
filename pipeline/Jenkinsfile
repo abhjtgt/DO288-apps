@@ -31,7 +31,7 @@ pipeline {
           oc delete all -l app=${APPNAME} -n $STAGE
           oc delete all -l build=${APPNAME} -n $STAGE
           
-          oc new-build --name=${APPNAME} --binary=true -n $STAGE
+          oc new-build --name=${APPNAME} java:8 --binary=true -n $STAGE
         '''
         
         script {
