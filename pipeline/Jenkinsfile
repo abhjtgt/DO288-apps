@@ -4,6 +4,7 @@ pipeline {
   }
   environment {
    NAME = "ABHIJIT" 
+    APPNAME = "pipeline"
   }
   agent {
     node {
@@ -16,6 +17,7 @@ pipeline {
       steps {
         sh '''
           ls -lrt 
+          cd $APPNAME
           echo "Compiling"
           mvn -s settings.xml clean compile
           
