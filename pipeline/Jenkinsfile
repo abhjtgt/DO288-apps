@@ -45,7 +45,7 @@ pipeline {
         }
         sh '''
         echo "Creating app from is"
-        oc new-app ${APPNAME}:latest -n $STAGE
+        oc new-app ${APPNAME}:latest --as-deployment-config -n $STAGE
         oc expose svc $APPNAME  -n $STAGE
         sleep 10
         curl http://movies-stage.apps.na45.prod.nextcle.com/movies
