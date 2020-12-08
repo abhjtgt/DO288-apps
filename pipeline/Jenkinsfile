@@ -83,6 +83,7 @@ pipeline {
           script {
             openshift.withCluster() {
               openshift.withProject("prd") {
+                openshift.selector("dc", "movies").rollout()
                 openshift.selector("dc", "movies").related('pods').untilEach(1) {
                  return (it.object().status.phase == 'Running' ) 
                 }
