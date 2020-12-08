@@ -90,6 +90,7 @@ pipeline {
             }
           }
           sh '''
+          sleep 5
             curl http://movies-prd.apps.na45.prod.nextcle.com/movies
           '''
           
