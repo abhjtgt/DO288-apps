@@ -66,10 +66,12 @@ pipeline {
       }
     }
     stage("PRODUCTION") {
-     sh '''
+      steps {
+       sh '''
      echo "Deploying in production
      
-     '''
+     ''' 
+      }
     }
   }
 }
