@@ -37,10 +37,17 @@ pipeline {
         script {
             openshift.withCluster() {
                 openshift.withProject("$STAGE") {
-                  openshift.selector("bc", "$APPNAME").startBuild("--from-file=pipeline/target/movies.jar")
+                  openshift.selector("bc", "$APPNAME").startBuild("--from-file=pipeline/target/movies.jar", "--wait=true", "--follow=true")
             }
           }
           echo "started building"
+          openshift.withCluster() {
+                openshift.withProject("$STAGE") {
+                  openshift.selector("dc","$APPNAME").related('pods').untilEach(1) {
+                    return (it.object().status.phase == 'Running')
+                  }
+                }
+          }
         }
         sh '''
         echo "Creating app from is"
