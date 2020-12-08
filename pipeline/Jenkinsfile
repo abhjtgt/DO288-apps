@@ -41,13 +41,7 @@ pipeline {
             }
           }
           echo "started building"
-          openshift.withCluster() {
-                openshift.withProject("$STAGE") {
-                  openshift.selector("dc","$APPNAME").related('pods').untilEach(1) {
-                    return (it.object().status.phase == 'Running')
-                  }
-                }
-          }
+
         }
         sh '''
         echo "Creating app from is"
