@@ -65,5 +65,11 @@ pipeline {
         '''
       }
     }
+    stage("PRODUCTION") {
+     sh '''
+     echo "Deploying in production
+     
+     '''
+    }
   }
 }
