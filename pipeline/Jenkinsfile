@@ -77,8 +77,21 @@ pipeline {
           }
           sh '''
             oc new-app --as-deployment-config --name movies prd/movies:latest -n prd
+            oc expose svc movies
+            curl http://movies-prd.apps.na45.prod.nextcle.com/movies
           '''
-          
+          script {
+            openshift.withCluster() {
+              openshift.withProject("prd") {
+                openshift.selector("dc", "movies").related('pods').withEach(1) {
+                 return (it.object().status.phase == 'Running' ) 
+                }
+              }
+            }
+          }
+          sh '''
+            curl http://movies-prd.apps.na45.prod.nextcle.com/movies
+          '''
           
         }
       }
