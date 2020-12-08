@@ -79,7 +79,7 @@ pipeline {
             oc new-app --as-deployment-config --name movies prd/movies:latest -n prd
           '''
           
-          }
+          
         }
       }
     }
