@@ -44,7 +44,7 @@ pipeline {
         sh '''
         echo "Creating app from is"
         oc new-app ${APPNAME}:latest -n $STAGE
-        oc expose svc $APPNAME
+        oc expose svc $APPNAME  -n $STAGE
         curl http://movies-stage.apps.na45.prod.nextcle.com/movies
         '''
       }
