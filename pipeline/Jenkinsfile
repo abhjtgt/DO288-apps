@@ -41,12 +41,25 @@ pipeline {
             }
           }
           echo "started building"
+          
 
         }
         sh '''
         echo "Creating app from is"
         oc new-app ${APPNAME}:latest --as-deployment-config -n $STAGE
         oc expose svc $APPNAME  -n $STAGE
+        '''
+        script {
+         openshift.withCluster() {
+                openshift.withProject("$STAGE") {
+                  openshift.selector("dc","$APPNAME").related('pods').untilEach(1) {
+                    return (it.object().status.phase == 'Running')
+                  }
+                }
+          } 
+        }
+        
+        sh '''
         sleep 10
         curl http://movies-stage.apps.na45.prod.nextcle.com/movies
         '''
