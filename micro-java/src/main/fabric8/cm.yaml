@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  APP_MSG: BAS KYA MAMU
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: cm1

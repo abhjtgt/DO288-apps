@@ -4,4 +4,5 @@ spec:
       containers:
         - envFrom:
           - configMapRef:
-              name: env-config
+              name: cm1
+
