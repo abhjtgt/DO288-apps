@@ -1,7 +1,0 @@
-/usr/libexec/s2i/assemble
-
-echo "************************"
-echo "Starting new one"
-
-echo "Test".$(date) > index.html
-echo "***********************"
