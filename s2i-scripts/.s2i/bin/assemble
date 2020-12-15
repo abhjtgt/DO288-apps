@@ -3,5 +3,5 @@
 echo "************************"
 echo "Starting new one"
 
-echo "Test".$(date) > info.html
+echo "Test".$(date) > index.html
 echo "***********************"
